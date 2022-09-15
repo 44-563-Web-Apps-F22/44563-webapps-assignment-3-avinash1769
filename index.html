@@ -94,13 +94,31 @@
 
     </html>
 
-<h1>code section</h1>
-    <blockquote>How does the IPAD Detector work ?</blockquote>
-        <a href="https://stackoverflow.com/questions/57776001/how-to-detect-ipad-pro-as-ipad-using-javascript">go to stack overflow</a>
-        <pre><svg width="100%" height = "100%">
-            RewriteCond %{HTTP_USER_AGENT} ^.iPad.$
-RewriteRule ^(.*)$ http://ipad.yourdomain.com [R=301]
-        </svg> </pre>
+    <hr>
+    <blockquotes>
+      <h1>Code Fencing</h1>
+      <p>
+        When dealing with numbers in JavaScript or any other programming language, there is a way to truncate a number after <b>n digits</b>. 
+        Unfortunately, there is no such function in Sass. Still, rounding and precision issues do happen when dealing with percentage based grid systems for instance.
+        Here is a Sass implementation of toFixed():
+      </p>
+      <a href="https://stackoverflow.com/questions/71690586/how-to-format-number-to-have-n-whole-and-decimal-digits">More Information</a>
+    </blockquotes>
+    <pre>
+        @function to-fixed($float, $digits: 2) {
+            $sass-precision: 5;
+            
+            @if $digits > $sass-precision {
+              @warn "Sass sets default precision to #{$sass-precision} digits, and there is no way to change that for now."
+              + "The returned number will have #{$sass-precision} digits, even if you asked for `#{$digits}`."
+              + "See https://github.com/sass/sass/issues/1122 for further informations.";
+            }
+            
+            $pow: pow(10, $digits);
+            @return round($float * $pow) / $pow;
+          }
+    </pre>
+    <blockquotes>
+      <a href="https://css-tricks.com/snippets/sass/fix-number-n-digits/">For much more Info</a>
+    </blockquotes>
     </body>
-    </html>
-    
